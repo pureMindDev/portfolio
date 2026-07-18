@@ -1,0 +1,61 @@
+// Aurora background: slow-drifting blurred gradient blobs.
+// Real Sass: a loop generating each blob's position/timing.
+
+$aurora-colors: (
+    "one": var(--brand),
+    "two": var(--brand-glow),
+    "three": var(--accent, var(--brand-cyan))
+);
+
+.aurora {
+    position: absolute;
+    inset: -10%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+
+    &__blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.3;
+        mix-blend-mode: screen;
+        will-change: transform;
+    }
+
+    &__blob--three {
+        opacity: 0.16;
+    }
+
+    @each $name, $color in $aurora-colors {
+        $i: index(map-keys($aurora-colors), $name);
+
+        &__blob--#{$name} {
+            background: $color;
+            width: #{28 + $i * 6}rem;
+            height: #{28 + $i * 6}rem;
+            top: #{($i - 1) * 18}%;
+            left: #{($i - 1) * 28}%;
+            animation: aurora-drift-#{$i} #{18 + $i * 4}s ease-in-out infinite;
+        }
+    }
+}
+
+@keyframes aurora-drift-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(6%, 8%) scale(1.08); }
+}
+@keyframes aurora-drift-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-8%, 5%) scale(1.05); }
+}
+@keyframes aurora-drift-3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(5%, -7%) scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .aurora__blob {
+        animation: none;
+    }
+}

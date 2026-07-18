@@ -1,0 +1,54 @@
+// Cursor spotlight + ripple. Real Sass: a mixin reused for each ripple ring.
+
+@mixin ripple-ring($delay) {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px solid var(--brand-glow);
+    opacity: 0;
+    animation: cursor-ripple 0.9s cubic-bezier(0.16, 1, 0.3, 1) $delay forwards;
+}
+
+.cursor-spotlight {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 40;
+    background: radial-gradient(
+        circle,
+        color-mix(in srgb, var(--brand) 12%, transparent) 0%,
+        transparent 70%
+    );
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+}
+
+.cursor-ripple {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    pointer-events: none;
+    z-index: 55;
+    transform: translate(-50%, -50%);
+
+    &__ring {
+        @include ripple-ring(0s);
+    }
+}
+
+@keyframes cursor-ripple {
+    from {
+        transform: scale(0.3);
+        opacity: 0.7;
+    }
+    to {
+        transform: scale(2.6);
+        opacity: 0;
+    }
+}
