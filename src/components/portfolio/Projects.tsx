@@ -96,7 +96,7 @@ export default function Projects() {
         <Section
             id="projects"
             eyebrow="Featured Projects"
-            title="Work that's live"
+            title="Featured Projects"
             subtitle="A selection of projects showcasing my experience in web development, from live storefronts to full-stack platforms."
         >
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

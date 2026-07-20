@@ -7,8 +7,8 @@ export default function Skills() {
         <Section
             id="skills"
             eyebrow="Skills"
-            title="The stack behind the work"
-            subtitle="Technical abilities I've been building since I started coding in 2025."
+            title="Technologies I Use"
+            subtitle="The modern tools, frameworks, and technologies I use to build fast, scalable, and user-focused web applications."
         >
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                 {skills.map((s, i) => (

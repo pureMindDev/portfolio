@@ -22,7 +22,12 @@ const item = {
     },
 };
 
-const roles = ["Full Stack Developer", "React Developer", "Node.js Developer"];
+const roles = [
+    "Full Stack Developer",
+    "Building Modern Web Applications",
+    "Crafting Digital Experiences",
+    "Turning Ideas Into Reality",
+];
 
 export default function Hero() {
     const sectionRef = useRef<HTMLElement>(null);
@@ -109,7 +114,7 @@ export default function Hero() {
                         <br />
                         <span
                             className="mt-1 block whitespace-nowrap text-foreground/95"
-                            style={{ fontSize: "clamp(1.4rem, 2vw + 0.75rem, 2.25rem)" }}
+                            style={{ fontSize: "clamp(1.05rem, 1.6vw + 0.55rem, 1.5rem)" }}
                         >
                             <Typewriter words={roles} />
                         </span>
@@ -119,15 +124,16 @@ export default function Hero() {
                         variants={item}
                         className="mt-7 max-w-2xl text-base font-light leading-relaxed text-muted-foreground md:text-lg"
                     >
-                        I design and build full stack web applications. I turn
-                        ideas into working products with React, Node.js,
-                        Express and MongoDB, from the interface down to the
-                        database. That means wiring up clean, responsive UI,
-                        building the APIs that power it, and modeling the data
-                        underneath, all as one connected system rather than
-                        separate pieces. I care about how things feel to use
-                        as much as how they work, so motion, spacing and small
-                        details get the same attention as the code itself.
+                        Hello! I'm Badmus Abdul Basit, professionally known as
+                        Pure Mind. I'm a Full Stack Developer who specializes
+                        in building modern, scalable web applications from
+                        frontend interfaces to backend systems. I create
+                        responsive websites, business platforms, dashboards,
+                        REST APIs, and custom web solutions with a focus on
+                        clean code, performance, seamless user experiences,
+                        and maintainable architecture. I enjoy turning ideas
+                        into reliable digital products that solve real-world
+                        problems.
                     </motion.p>
 
                     <motion.div variants={item} className="mt-6 max-w-xl">

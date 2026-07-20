@@ -9,7 +9,7 @@ import { toast } from "sonner";
 // email, and paste its endpoint below. Once set, submitting the form
 // on this page delivers straight to your inbox with no extra step for
 // the visitor (no mail app popup).
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mdaqzgnp";
 
 export default function Contact() {
     const [sending, setSending] = useState(false);
@@ -31,7 +31,11 @@ export default function Contact() {
             const res = await fetch(FORMSPREE_ENDPOINT, {
                 method: "POST",
                 headers: { Accept: "application/json", "Content-Type": "application/json" },
-                body: JSON.stringify({ email, message }),
+                body: JSON.stringify({
+                    email,
+                    message,
+                    _subject: `New portfolio message from ${email}`,
+                }),
             });
             if (!res.ok) throw new Error("Request failed");
             form.reset();
