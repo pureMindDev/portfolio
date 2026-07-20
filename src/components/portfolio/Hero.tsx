@@ -124,8 +124,7 @@ export default function Hero() {
                         variants={item}
                         className="mt-7 max-w-2xl text-base font-light leading-relaxed text-muted-foreground md:text-lg"
                     >
-                        Hello! I'm Badmus Abdul Basit, professionally known as
-                        Pure Mind. I'm a Full Stack Developer who specializes
+                        Hello! I'm Badmus Abdul Basit, a Full Stack Developer who specializes
                         in building modern, scalable web applications from
                         frontend interfaces to backend systems. I create
                         responsive websites, business platforms, dashboards,
