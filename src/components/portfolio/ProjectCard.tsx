@@ -2,6 +2,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import type { MouseEvent } from "react";
 import ProjectMockup from "./ProjectMockup";
+import Magnetic from "./Magnetic";
 import type { Project } from "./Projects";
 
 export default function ProjectCard({
@@ -90,24 +91,34 @@ export default function ProjectCard({
                 </div>
             </button>
             <div className="flex items-center justify-between border-t border-white/5 px-5 py-3">
-                <a
-                    href={p.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    data-cursor="hover"
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-brand hover:underline"
-                >
-                    Live Demo <ExternalLink className="h-3.5 w-3.5" />
-                </a>
-                <a
-                    href="https://github.com/pureMindDev"
-                    target="_blank"
-                    rel="noreferrer"
-                    data-cursor="hover"
-                    className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
-                >
-                    <Github className="h-3.5 w-3.5" /> GitHub
-                </a>
+                <Magnetic strength={0.3}>
+                    <motion.a
+                        href={p.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        data-cursor="hover"
+                        whileHover={{ scale: 1.06 }}
+                        whileTap={{ scale: 0.96 }}
+                        className="group/btn inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-3 py-1.5 text-xs font-medium text-brand transition-colors hover:bg-brand/20"
+                    >
+                        Live Demo
+                        <ExternalLink className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                    </motion.a>
+                </Magnetic>
+                <Magnetic strength={0.3}>
+                    <motion.a
+                        href="https://github.com/pureMindDev"
+                        target="_blank"
+                        rel="noreferrer"
+                        data-cursor="hover"
+                        whileHover={{ scale: 1.06 }}
+                        whileTap={{ scale: 0.96 }}
+                        className="group/btn inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
+                    >
+                        <Github className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:rotate-12" />
+                        GitHub
+                    </motion.a>
+                </Magnetic>
             </div>
         </motion.article>
     );

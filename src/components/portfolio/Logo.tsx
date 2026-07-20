@@ -6,7 +6,7 @@ type Props = {
 
 /**
  * The official Pure Mind brand mark: a hexagonal "PM" monogram in the
- * brand gradient. This is the single source of truth for the logo —
+ * brand gradient. This is the single source of truth for the logo,
  * used in the Navbar, Loading Screen, Footer and the About section.
  */
 export default function Logo({ size = 40, className = "" }: Props) {

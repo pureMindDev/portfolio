@@ -7,7 +7,7 @@ export default function Skills() {
         <Section
             id="skills"
             eyebrow="Skills"
-            title="Tools I use to ship great products"
+            title="The stack behind the work"
             subtitle="Technical abilities I've been building since I started coding in 2025."
         >
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">

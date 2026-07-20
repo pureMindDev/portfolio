@@ -5,10 +5,16 @@ import Section from "./Section";
 import Magnetic from "./Magnetic";
 import { toast } from "sonner";
 
+// Sign up free at https://formspree.io, create a form pointed at your
+// email, and paste its endpoint below. Once set, submitting the form
+// on this page delivers straight to your inbox with no extra step for
+// the visitor (no mail app popup).
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
 export default function Contact() {
     const [sending, setSending] = useState(false);
 
-    const submit = (e: React.FormEvent<HTMLFormElement>) => {
+    const submit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.currentTarget;
         const data = new FormData(form);
@@ -19,23 +25,30 @@ export default function Contact() {
             toast.error("Please fill everything and confirm consent.");
             return;
         }
+
         setSending(true);
-        const subject = encodeURIComponent("New portfolio inquiry");
-        const body = encodeURIComponent(`From: ${email}\n\n${message}`);
-        window.location.href = `mailto:badmusabdulbasit932@gmail.com?subject=${subject}&body=${body}`;
-        setTimeout(() => {
-            setSending(false);
+        try {
+            const res = await fetch(FORMSPREE_ENDPOINT, {
+                method: "POST",
+                headers: { Accept: "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({ email, message }),
+            });
+            if (!res.ok) throw new Error("Request failed");
             form.reset();
-            toast.success("Opening your mail app…");
-        }, 600);
+            toast.success("Message sent. I'll get back to you soon.");
+        } catch {
+            toast.error("Couldn't send right now, please email me directly instead.");
+        } finally {
+            setSending(false);
+        }
     };
 
     return (
         <Section
             id="contact"
             eyebrow="Get in touch"
-            title="Let's build something premium"
-            subtitle="Use the form or reach out directly — I usually reply within a day."
+            title="Let's talk"
+            subtitle="Use the form or reach out directly. I usually reply within a day."
         >
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                 <motion.form

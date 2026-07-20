@@ -1,15 +1,16 @@
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
-import { ArrowRight, Download, MousePointer2, Github, Mail, Phone } from "lucide-react";
+import { ArrowRight, Download, MousePointer2 } from "lucide-react";
 import { useEffect, useRef } from "react";
 import HeroIllustration from "./HeroIllustration";
 import Typewriter from "./Typewriter";
 import Magnetic from "./Magnetic";
 import Aurora from "./Aurora";
+import SkillsMarquee from "./SkillsMarquee";
 import { downloadCV } from "@/lib/cv";
 
 const container = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.08, delayChildren: 0.15 } },
+    hidden: { x: 50 },
+    show: { x: 0, transition: { staggerChildren: 0.08, delayChildren: 0.15, duration: 0.9, ease: [0.16, 1, 0.3, 1] as const } },
 };
 const item = {
     hidden: { opacity: 0, y: 22, filter: "blur(6px)" },
@@ -21,18 +22,7 @@ const item = {
     },
 };
 
-const roles = [
-    "Full Stack Developer",
-    "Building Modern Web Applications",
-    "Crafting Digital Experiences",
-    "Turning Ideas Into Reality"
-];
-
-const socials = [
-    { icon: Github, href: "https://github.com/pureMindDev", label: "GitHub" },
-    { icon: Mail, href: "mailto:badmusabdulbasit932@gmail.com", label: "Email" },
-    { icon: Phone, href: "tel:+2347017470501", label: "Phone" },
-];
+const roles = ["Full Stack Developer", "React Developer", "Node.js Developer"];
 
 export default function Hero() {
     const sectionRef = useRef<HTMLElement>(null);
@@ -46,7 +36,7 @@ export default function Hero() {
     const glowY = useTransform(smy, (v) => v * -20);
 
     // Cinematic hand-off into the About section: as the visitor scrolls
-    // past the hero, its content gently scales down, lifts and fades —
+    // past the hero, its content gently scales down, lifts and fades,
     // rather than hard-cutting to the next section.
     const { scrollYProgress } = useScroll({
         target: sectionRef,
@@ -89,12 +79,12 @@ export default function Hero() {
 
             <motion.div
                 style={{ opacity: contentOpacity, scale: contentScale, y: contentY }}
-                className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2"
+                className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-14 px-6 lg:grid-cols-2 lg:gap-20"
             >
                 {/* Left: premium floating laptop visual */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, x: -60, scale: 0.92 }}
+                    animate={{ opacity: 1, x: 0, scale: 1 }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                     className="relative order-2 lg:order-1"
                 >
@@ -106,37 +96,43 @@ export default function Hero() {
                     variants={container}
                     initial="hidden"
                     animate="show"
-                    className="order-1 lg:order-2"
+                    className="order-1 lg:order-2 min-w-0"
                 >
-                    <motion.span
-                        variants={item}
-                        className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-muted-foreground"
-                    >
-                        <span className="h-1.5 w-1.5 rounded-full bg-brand shadow-[0_0_10px_var(--brand)]" />
-                        Available for work
-                    </motion.span>
-
                     <motion.h1
                         variants={item}
-                        className="mt-5 text-5xl font-bold leading-[0.98] tracking-[-0.03em] md:text-6xl lg:text-[4.5rem]"
+                        className="mt-5 font-bold leading-[1.05] tracking-[-0.02em]"
+                        style={{ fontSize: "clamp(2.25rem, 3.6vw + 1rem, 3.25rem)" }}
                     >
-                        <span className="md:whitespace-nowrap">
+                        <span className="whitespace-nowrap">
                             Hi, I'm <span className="text-gradient-brand">Pure Mind</span>
                         </span>
                         <br />
-                        <span className="block whitespace-nowrap text-[1.6rem] leading-tight text-foreground/95 sm:text-3xl md:text-4xl lg:text-[2.75rem]">
+                        <span
+                            className="mt-1 block whitespace-nowrap text-foreground/95"
+                            style={{ fontSize: "clamp(1.4rem, 2vw + 0.75rem, 2.25rem)" }}
+                        >
                             <Typewriter words={roles} />
                         </span>
                     </motion.h1>
 
                     <motion.p
                         variants={item}
-                        className="mt-7 max-w-xl text-base font-light leading-relaxed text-muted-foreground md:text-lg"
+                        className="mt-7 max-w-2xl text-base font-light leading-relaxed text-muted-foreground md:text-lg"
                     >
-                        I build web applications with React, Node.js, Express and
-                        MongoDB. I started coding in 2025 and I've been shipping
-                        real, live projects ever since.
+                        I design and build full stack web applications. I turn
+                        ideas into working products with React, Node.js,
+                        Express and MongoDB, from the interface down to the
+                        database. That means wiring up clean, responsive UI,
+                        building the APIs that power it, and modeling the data
+                        underneath, all as one connected system rather than
+                        separate pieces. I care about how things feel to use
+                        as much as how they work, so motion, spacing and small
+                        details get the same attention as the code itself.
                     </motion.p>
+
+                    <motion.div variants={item} className="mt-6 max-w-xl">
+                        <SkillsMarquee />
+                    </motion.div>
 
                     <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-3">
                         <Magnetic strength={0.4}>
@@ -168,47 +164,12 @@ export default function Hero() {
                             </button>
                         </Magnetic>
                     </motion.div>
-
-                    <motion.div variants={item} className="mt-9 flex items-center gap-3">
-                        {socials.map((s, i) => (
-                            <motion.a
-                                key={s.label}
-                                href={s.href}
-                                aria-label={s.label}
-                                data-cursor="hover"
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 1.1 + i * 0.1, duration: 0.5 }}
-                                whileHover={{ y: -4, scale: 1.08 }}
-                                className="grid h-10 w-10 place-items-center rounded-full glass text-muted-foreground transition-colors hover:text-foreground"
-                            >
-                                <s.icon className="h-4 w-4" />
-                            </motion.a>
-                        ))}
-                    </motion.div>
-
-                    <motion.div variants={item} className="mt-8 flex items-center gap-6 text-xs text-muted-foreground">
-                        <div>
-                            <div className="font-display text-2xl font-semibold text-foreground">6</div>
-                            <div>Live projects</div>
-                        </div>
-                        <div className="h-8 w-px bg-white/10" />
-                        <div>
-                            <div className="font-display text-2xl font-semibold text-foreground">Full Stack</div>
-                            <div>Focus</div>
-                        </div>
-                        <div className="h-8 w-px bg-white/10" />
-                        <div>
-                            <div className="font-display text-2xl font-semibold text-foreground">2025</div>
-                            <div>Started coding</div>
-                        </div>
-                    </motion.div>
                 </motion.div>
             </motion.div>
 
             {/* Scroll indicator */}
             <motion.a
-                href="#about"
+                href="#skills"
                 aria-label="Scroll down"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

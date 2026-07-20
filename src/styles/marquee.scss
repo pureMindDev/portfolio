@@ -1,24 +1,8 @@
-// Infinite horizontal marquee for the About section's skill pills.
-// Real Sass: variables + a mixin, not just renamed CSS.
+// Infinite horizontal marquee for the hero's skill pills.
+// Real Sass: variables driving the animation timing.
 
 $marquee-duration: 28s;
 $marquee-gap: 0.75rem;
-
-@mixin marquee-fade($dir) {
-    content: "";
-    position: absolute;
-    top: 0;
-    #{$dir}: 0;
-    width: 3rem;
-    height: 100%;
-    z-index: 2;
-    pointer-events: none;
-    background: linear-gradient(
-        to #{if($dir == "left", "right", "left")},
-        var(--background) 0%,
-        transparent 100%
-    );
-}
 
 .skills-marquee {
     position: relative;
@@ -43,6 +27,11 @@ $marquee-gap: 0.75rem;
         width: max-content;
         gap: $marquee-gap;
         animation: skills-marquee-scroll $marquee-duration linear infinite;
+        animation-play-state: paused;
+    }
+
+    &.is-in-view &__track {
+        animation-play-state: running;
     }
 
     &:hover &__track {

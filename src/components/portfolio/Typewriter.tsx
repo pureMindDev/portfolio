@@ -3,7 +3,7 @@ import "../../styles/typewriter.scss";
 
 /**
  * Types each word out character by character, pauses, deletes it
- * character by character, then moves to the next word — forever.
+ * character by character, then moves to the next word, forever.
  * A real typewriter loop, not a crossfade between full strings.
  */
 export default function Typewriter({

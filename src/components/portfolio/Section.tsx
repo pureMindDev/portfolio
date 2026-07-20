@@ -51,7 +51,7 @@ export default function Section({
                     )}
                     <motion.h2
                         variants={headerItem}
-                        className="text-5xl font-semibold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl"
+                        className="text-3xl font-semibold leading-[1.15] tracking-tight md:text-4xl lg:text-[2.75rem]"
                     >
                         {title}
                     </motion.h2>

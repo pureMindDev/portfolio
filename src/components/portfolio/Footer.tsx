@@ -50,8 +50,7 @@ export default function Footer() {
                     <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Links</div>
                     <ul className="mt-4 space-y-2 text-sm">
                         {[
-                            ["Home", "#home"],
-                            ["About", "#about"],
+                            ["About", "#home"],
                             ["Skills", "#skills"],
                             ["Projects", "#projects"],
                             ["Contact", "#contact"],
@@ -99,8 +98,8 @@ export default function Footer() {
             </div>
 
             <div className="mx-auto mt-12 flex max-w-6xl flex-col items-center justify-between gap-3 border-t border-white/5 px-6 pt-6 text-[12px] text-muted-foreground md:flex-row">
-                <p>© {new Date().getFullYear()} Pure Mind — All rights reserved.</p>
-                {/* <p>Designed & built with React, Framer Motion, Tailwind & Sass.</p> */}
+                <p>© {new Date().getFullYear()} Pure Mind. All rights reserved.</p>
+                <p>Designed & built with React, Framer Motion, Tailwind & Sass.</p>
             </div>
 
             <motion.button

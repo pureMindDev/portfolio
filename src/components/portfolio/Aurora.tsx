@@ -2,7 +2,7 @@ import "../../styles/aurora.scss";
 
 /**
  * Slow-drifting blurred gradient blobs, screen-blended over the dark
- * background — the "aurora" effect used behind the Hero.
+ * background: the "aurora" effect used behind the Hero.
  */
 export default function Aurora() {
     return (

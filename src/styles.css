@@ -220,16 +220,6 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 4px;
 }
 
-body.has-custom-cursor,
-body.has-custom-cursor a,
-body.has-custom-cursor button,
-body.has-custom-cursor input,
-body.has-custom-cursor textarea,
-body.has-custom-cursor label,
-body.has-custom-cursor [role="button"] {
-    cursor: none !important;
-}
-
 @layer utilities {
     .font-display {
         font-family: var(--font-display);

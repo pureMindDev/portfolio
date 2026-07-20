@@ -30,8 +30,8 @@ export default function Services() {
         <Section
             id="services"
             eyebrow="Services"
-            title="What I can build for you"
-            subtitle="Focused on Full Stack development — from a single landing page to a full application."
+            title="How I can help"
+            subtitle="Focused on Full Stack development, from a single landing page to a full application."
         >
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                 {services.map((s, i) => (

@@ -11,7 +11,7 @@ export type Project = {
     title: string;
     kind: Kind;
     // Swap in a real desktop screenshot path here (e.g. an image imported
-    // from src/assets, or a public/ path) once available — everything else
+    // from src/assets, or a public/ path) once available. Everything else
     // (card layout, hover zoom, modal preview) works unchanged either way.
     image?: string;
     desc: string;
@@ -27,7 +27,7 @@ const projects: Project[] = [
         title: "Lost & Found NG",
         kind: "marketplace",
         // Drop your screenshot in public/projects/lost-and-found-ng.jpg and it
-        // shows up here automatically — no code changes needed.
+        // shows up here automatically, no code changes needed.
         image: "/projects/lost-and-found-ng.jpg",
         desc: "A lost-and-found platform for reporting and recovering lost items.",
         long: "A lost-and-found platform, built end to end as a Full Stack app.",
@@ -57,7 +57,7 @@ const projects: Project[] = [
         title: "Audiophile",
         kind: "audiophile",
         image: "/projects/audiophile.jpg",
-        desc: "An audio gear e-commerce site — headphones, speakers and earphones.",
+        desc: "An audio gear e-commerce site for headphones, speakers and earphones.",
         long: "An e-commerce site for audio gear, with headphones, speakers and earphones categories, product pages and a cart.",
         stack: ["React"],
         live: "https://audiophile-kappa-mauve.vercel.app/",
@@ -96,7 +96,7 @@ export default function Projects() {
         <Section
             id="projects"
             eyebrow="Featured Projects"
-            title="Selected work"
+            title="Work that's live"
             subtitle="A selection of projects showcasing my experience in web development, from live storefronts to full-stack platforms."
         >
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

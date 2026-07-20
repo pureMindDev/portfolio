@@ -4,11 +4,9 @@ import Magnetic from "./Magnetic";
 import Logo from "./Logo";
 
 const links = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
+    { href: "#home", label: "About" },
     { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
-    { href: "#experience", label: "Experience" },
     { href: "#services", label: "Services" },
     { href: "#contact", label: "Contact" },
 ];
